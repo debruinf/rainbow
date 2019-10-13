@@ -1,6 +1,22 @@
 # Rainbow
 
-**TODO: Add description**
+Rainbow provides functions for generating constistent colors based on the input provided.
+
+## Basic usage
+
+```elixir
+  iex> Rainbow.colorize("boring grey")
+  "#82D458"
+
+  iex> Rainbow.colorize("no hex color", format: "rgba")
+  "rgba(45, 100, 139, 1.0)"
+  ```
+
+#### Options
+- format: the format of output
+    - "hex_color" (default), "rgba"
+- opacity: used in case `format: "rgba"`
+    - 0.0 - 1.0 (defualt)
 
 ## Installation
 
