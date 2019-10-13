@@ -10,13 +10,26 @@ Rainbow provides functions for generating constistent colors based on the input 
 
   iex> Rainbow.colorize("no hex color", format: "rgba")
   "rgba(45, 100, 139, 1.0)"
+
+  iex> Rainbow.colorize("almost invisible", format: "rgba", opacity: 0.1)
+  "rgba(88, 98, 191, 0.1)"
   ```
+
+#### Input
+
+One of:
+- string
+- integer
+- float
+- atom
+- binary
 
 #### Options
 - format: the format of output
-    - "hex_color" (default), "rgba"
+    - "hex_color" (default)
+    - "rgba"
 - opacity: used in case `format: "rgba"`
-    - 0.0 - 1.0 (defualt)
+    - 0.0 - 1.0 (default)
 
 ## Installation
 

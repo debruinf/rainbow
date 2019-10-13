@@ -21,15 +21,29 @@ defmodule Rainbow do
       iex> Rainbow.colorize("no hex color", format: "rgba")
       "rgba(45, 100, 139, 1.0)"
 
+      iex> Rainbow.colorize("almost invisible", format: "rgba", opacity: 0.1)
+      "rgba(88, 98, 191, 0.1)"
+
   """
   def colorize(input, options \\ []) do
     format =  Keyword.get(options, :format, @default_format)
     opacity =  Keyword.get(options, :opacity, @default_opacity)
 
-    hex_hash = :crypto.hash(:md5, input) |> Base.encode16()
+    string_input = stringify(input)
+    hex_hash = :crypto.hash(:md5, string_input) |> Base.encode16()
     case format do
       "hexcolor" -> hex_color(hex_hash)
       "rgba" -> rgba_color(hex_hash, opacity)
+    end
+  end
+
+  defp stringify(input) do
+    cond do
+      String.valid?(input) -> input
+      is_integer(input) -> Integer.to_string(input)
+      is_float(input) -> Float.to_string(input)
+      is_atom(input) -> Atom.to_string(input)
+      is_binary(input) -> Base.encode16(input)
     end
   end
 
