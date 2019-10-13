@@ -7,7 +7,13 @@ defmodule Rainbow do
   @default_opacity 1.0
 
   @doc """
-  Returns an input-consistent random color in the format of choice. Inputs supported: string
+  Returns an input-consistent random color in the format of choice.
+  Inputs supported:
+  - string
+  - integer
+  - float
+  - atom
+  - binary
 
   Options:
   - format: "hexcolor" (default), "rgba"
